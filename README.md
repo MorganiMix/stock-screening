@@ -20,7 +20,7 @@ A Python application that performs automated daily stock screening and sends res
 
 ### 1. Clone and Setup
 ```bash
-git clone [<repository-url>](https://github.com/MorganiMix/stock-screening)
+git clone https://github.com/MorganiMix/stock-screening
 cd stock-screening-bot
 ```
 
