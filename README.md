@@ -20,8 +20,8 @@ A Python application that performs automated daily stock screening and sends res
 
 ### 1. Clone and Setup
 ```bash
-git clone <repository-url>
-cd stock-screening-bot
+git clone https://github.com/MorganiMix/stock-screening
+cd stock-screening
 ```
 
 ### 2. Configure Environment
@@ -36,13 +36,13 @@ nano .env
 ### 3. Run with Docker Compose
 ```bash
 # Build and start the container
-docker-compose up -d
+docker compose up -d
 
 # View logs
-docker-compose logs -f
+docker compose logs -f
 
 # Stop the container
-docker-compose down
+docker compose down
 ```
 
 ## Manual Installation
