@@ -30,8 +30,8 @@ RUN chmod +x init.sh
 # Create non-root user for security
 RUN useradd --create-home --shell /bin/bash app
 
-# Create directories for output files and logs with proper ownership
-RUN mkdir -p /app/output /app/logs \
+# Create directories for output files with proper ownership
+RUN mkdir -p /app/output \
     && chown -R app:app /app
 
 USER app

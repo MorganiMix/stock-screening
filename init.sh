@@ -3,17 +3,17 @@
 
 echo "Initializing stock screening bot..."
 
-# Create directories if they don't exist
-mkdir -p /app/output /app/logs
+# Create output directory if it doesn't exist
+mkdir -p /app/output
 
 # Set proper permissions
-chmod 755 /app/output /app/logs
+chmod 755 /app/output
 
-# Check if we can write to the directories
-if [ -w /app/output ] && [ -w /app/logs ]; then
-    echo "✅ Directories created and writable"
+# Check if we can write to the directory
+if [ -w /app/output ]; then
+    echo "✅ Output directory created and writable"
 else
-    echo "⚠️  Warning: Directory permissions may be incorrect"
+    echo "⚠️  Warning: Output directory permissions may be incorrect"
 fi
 
 # Check if Excel file exists

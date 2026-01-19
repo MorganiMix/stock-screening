@@ -31,18 +31,17 @@ path = os.getenv('DATA_PATH', './')
 filename = os.getenv('EXCEL_FILENAME', 'AASTOCKS_Export_2025-7-13.xlsx')
 date1 = os.getenv('START_DATE', '2024-01-01')
 
-# Ensure output and logs directories exist
+# Ensure output directory exists (logs and files will go here)
 os.makedirs('output', exist_ok=True)
-os.makedirs('logs', exist_ok=True)
 
 # Setup logging with fallback
 log_handlers = [logging.StreamHandler()]
 
 try:
-    # Try to create file handler
-    log_handlers.append(logging.FileHandler('logs/stock_screening.log'))
+    # Try to create file handler in output directory
+    log_handlers.append(logging.FileHandler('output/stock_screening.log'))
 except PermissionError:
-    # Fallback to current directory if logs/ is not writable
+    # Fallback to current directory if output/ is not writable
     try:
         log_handlers.append(logging.FileHandler('stock_screening.log'))
         print("Warning: Using current directory for log file due to permission issues")

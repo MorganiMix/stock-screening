@@ -26,15 +26,14 @@ setup:
 	else \
 		echo ".env file already exists."; \
 	fi
-	@mkdir -p output logs
-	@chmod 755 output logs
-	@echo "Created output and logs directories with proper permissions."
+	@mkdir -p output
+	@chmod 755 output
+	@echo "Created output directory with proper permissions."
 
 # Initial setup for Windows
 setup-windows:
 	@if not exist .env copy .env.example .env
 	@if not exist output mkdir output
-	@if not exist logs mkdir logs
 	@echo "Setup complete. Please edit .env with your credentials."
 
 # Build Docker image

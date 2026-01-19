@@ -14,10 +14,8 @@ services:
     env_file:
       - .env
     volumes:
-      # Mount output directory to persist generated files
+      # Mount output directory to persist generated files and logs
       - ./output:/app/output
-      # Mount logs directory to persist logs
-      - ./logs:/app/logs
       # Mount Excel file if you want to update it without rebuilding
       - ./AASTOCKS_Export_2025-7-13.xlsx:/app/AASTOCKS_Export_2025-7-13.xlsx:ro
     networks:
