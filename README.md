@@ -122,17 +122,17 @@ The `docker-compose.yml` provides:
 
 ```bash
 # Start in background
-docker-compose up -d
+docker compose up -d
 
 # View real-time logs
-docker-compose logs -f stock-screening
+docker compose logs -f stock-screening
 
 # Restart service
-docker-compose restart
+docker compose restart
 
 # Update and rebuild
-docker-compose down
-docker-compose up --build -d
+docker compose down
+docker compose up --build -d
 ```
 
 ### Manual Docker Commands
@@ -198,13 +198,13 @@ Line chart showing:
 **Docker Compose:**
 ```bash
 # Real-time logs
-docker-compose logs -f
+docker compose logs -f
 
 # Last 100 lines
-docker-compose logs --tail=100
+docker compose logs --tail=100
 
 # Specific service logs
-docker-compose logs stock-screening
+docker compose logs stock-screening
 ```
 
 **Manual Installation:**
@@ -250,7 +250,7 @@ tail -n 50 logs/stock_screening.log
 **Docker:**
 ```bash
 # Check container health
-docker-compose ps
+docker compose ps
 
 # Container resource usage
 docker stats stock-screening-bot
@@ -282,7 +282,7 @@ ps aux | grep stock_screening
 python stock_screening_students_v8.py --run-once
 
 # Test with Docker
-docker-compose run --rm stock-screening python stock_screening_students_v8.py --run-once
+docker compose run --rm stock-screening python stock_screening_students_v8.py --run-once
 ```
 
 ### Updating Stock List
