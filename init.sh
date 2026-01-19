@@ -7,7 +7,7 @@ echo "Initializing stock screening bot..."
 mkdir -p /output
 
 # Set proper permissions
-chmod 755 /output
+sudo chmod 755 /output
 
 # Check if we can write to the directory
 if [ -w /output ]; then
