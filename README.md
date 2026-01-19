@@ -36,13 +36,13 @@ nano .env
 ### 3. Run with Docker Compose
 ```bash
 # Build and start the container
-docker-compose up -d
+docker compose up -d
 
 # View logs
-docker-compose logs -f
+docker compose logs -f
 
 # Stop the container
-docker-compose down
+docker compose down
 ```
 
 ## Manual Installation
