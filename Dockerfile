@@ -2,7 +2,7 @@
 FROM python:3.10-slim
 
 # Set working directory
-WORKDIR /app
+WORKDIR /
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
@@ -27,14 +27,8 @@ COPY init.sh .
 # Make init script executable
 RUN chmod +x init.sh
 
-# Create non-root user for security
-RUN useradd --create-home --shell /bin/bash app
-
 # Create directories for output files with proper ownership
 RUN mkdir -p /output \
-    && chown -R app:app /app /output
-
-USER app
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
