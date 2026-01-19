@@ -1,0 +1,23 @@
+# Development overrides for docker-compose.yml
+# This file is automatically loaded by docker-compose
+# Use for development-specific configurations
+
+version: '3.8'
+
+services:
+  stock-screening:
+    # Override for development
+    # Uncomment the following lines for development mode:
+    
+    # volumes:
+    #   # Mount source code for live editing
+    #   - ./stock_screening_students_v8.py:/app/stock_screening_students_v8.py
+    #   - ./requirements.txt:/app/requirements.txt
+    
+    # environment:
+    #   # Enable debug logging
+    #   - LOG_LEVEL=DEBUG
+    
+    # ports:
+    #   # Expose port for debugging (if needed)
+    #   - "8000:8000"

@@ -27,16 +27,20 @@ load_dotenv()
 # Configuration from environment variables
 TOKEN = os.getenv('TELEGRAM_TOKEN')
 chat_id = os.getenv('TELEGRAM_CHAT_ID')
-path = os.getenv('DATA_PATH', '/C:/temp/')
+path = os.getenv('DATA_PATH', './')
 filename = os.getenv('EXCEL_FILENAME', 'AASTOCKS_Export_2025-7-13.xlsx')
 date1 = os.getenv('START_DATE', '2024-01-01')
+
+# Ensure output and logs directories exist
+os.makedirs('output', exist_ok=True)
+os.makedirs('logs', exist_ok=True)
 
 # Setup logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('stock_screening.log'),
+        logging.FileHandler('logs/stock_screening.log'),
         logging.StreamHandler()
     ]
 )
@@ -72,8 +76,8 @@ def run_stock_screening():
         df_result = table_gen1(D_stocks, L_stocks, L_stocks_names)
         
         # Save results to Excel
-        result_filename = f"df_result_{today}.xlsx"
-        df_result.to_excel(path + result_filename, index=False)
+        result_filename = f"output/df_result_{today}.xlsx"
+        df_result.to_excel(result_filename, index=False)
         logging.info(f"Results saved to {result_filename}")
         
         # Generate chart
@@ -101,7 +105,7 @@ def generate_chart(D_stocks, df_result, today):
         ax.legend()
         ax.grid(True)
         plt.title(f"Stock Performance Chart - {today}")
-        plt.savefig(path + "chart1.png")
+        plt.savefig("output/chart1.png")
         plt.close()
         logging.info("Chart generated successfully")
     except Exception as e:
@@ -113,11 +117,11 @@ async def send_telegram_results(today):
         bot = telegram.Bot(token=TOKEN)
         
         # Send Excel file
-        with open(path + f"df_result_{today}.xlsx", 'rb') as file:
+        with open(f"output/df_result_{today}.xlsx", 'rb') as file:
             await bot.send_document(chat_id=chat_id, document=file)
         
         # Send chart
-        with open(path + 'chart1.png', 'rb') as photo:
+        with open('output/chart1.png', 'rb') as photo:
             await bot.send_photo(chat_id=chat_id, photo=photo)
         
         logging.info("Results sent to Telegram successfully")
