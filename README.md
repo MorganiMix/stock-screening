@@ -145,8 +145,8 @@ docker build -t stock-screening-bot .
 docker run -d \
   --name stock-screening \
   --env-file .env \
-  -v $(pwd)/output:/app/output \
-  -v $(pwd)/logs:/app/logs \
+  -v $(pwd)/output:/output \
+  -v $(pwd)/logs:/logs \
   --restart unless-stopped \
   stock-screening-bot
 ```

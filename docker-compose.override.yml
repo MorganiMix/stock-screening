@@ -11,8 +11,8 @@ services:
     
     # volumes:
     #   # Mount source code for live editing
-    #   - ./stock_screening_students_v8.py:/app/stock_screening_students_v8.py
-    #   - ./requirements.txt:/app/requirements.txt
+    #   - ./stock_screening_students_v8.py:/stock_screening_students_v8.py
+    #   - ./requirements.txt:/requirements.txt
     
     # environment:
     #   # Enable debug logging

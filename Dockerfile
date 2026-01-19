@@ -31,7 +31,7 @@ RUN chmod +x init.sh
 RUN useradd --create-home --shell /bin/bash app
 
 # Create directories for output files with proper ownership
-RUN mkdir -p /app/output \
+RUN mkdir -p /output \
     && chown -R app:app /app
 
 USER app

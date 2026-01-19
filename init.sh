@@ -4,20 +4,20 @@
 echo "Initializing stock screening bot..."
 
 # Create output directory if it doesn't exist
-mkdir -p /app/output
+mkdir -p /output
 
 # Set proper permissions
-chmod 755 /app/output
+chmod 755 /output
 
 # Check if we can write to the directory
-if [ -w /app/output ]; then
+if [ -w /output ]; then
     echo "✅ Output directory created and writable"
 else
     echo "⚠️  Warning: Output directory permissions may be incorrect"
 fi
 
 # Check if Excel file exists
-if [ -f "/app/${EXCEL_FILENAME:-AASTOCKS_Export_2025-7-13.xlsx}" ]; then
+if [ -f "/${EXCEL_FILENAME:-AASTOCKS_Export_2025-7-13.xlsx}" ]; then
     echo "✅ Excel file found"
 else
     echo "❌ Excel file not found: ${EXCEL_FILENAME:-AASTOCKS_Export_2025-7-13.xlsx}"

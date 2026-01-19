@@ -8,16 +8,16 @@ services:
     environment:
       - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
       - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
-      - DATA_PATH=/app/
+      - DATA_PATH=/
       - EXCEL_FILENAME=AASTOCKS_Export_2025-7-13.xlsx
       - START_DATE=2024-01-01
     env_file:
       - .env
     volumes:
       # Mount output directory to persist generated files and logs
-      - ./output:/app/output
+      - ./output:/output
       # Mount Excel file if you want to update it without rebuilding
-      - ./AASTOCKS_Export_2025-7-13.xlsx:/app/AASTOCKS_Export_2025-7-13.xlsx:ro
+      - ./AASTOCKS_Export_2025-7-13.xlsx:/AASTOCKS_Export_2025-7-13.xlsx:ro
     networks:
       - stock-screening-network
     logging:
