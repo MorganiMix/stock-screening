@@ -35,14 +35,24 @@ date1 = os.getenv('START_DATE', '2024-01-01')
 os.makedirs('output', exist_ok=True)
 os.makedirs('logs', exist_ok=True)
 
-# Setup logging
+# Setup logging with fallback
+log_handlers = [logging.StreamHandler()]
+
+try:
+    # Try to create file handler
+    log_handlers.append(logging.FileHandler('logs/stock_screening.log'))
+except PermissionError:
+    # Fallback to current directory if logs/ is not writable
+    try:
+        log_handlers.append(logging.FileHandler('stock_screening.log'))
+        print("Warning: Using current directory for log file due to permission issues")
+    except PermissionError:
+        print("Warning: Cannot create log file, using console logging only")
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('logs/stock_screening.log'),
-        logging.StreamHandler()
-    ]
+    handlers=log_handlers
 )
 def run_stock_screening():
     """Main function to run the stock screening process"""

@@ -1,23 +1,24 @@
 # Stock Screening Bot Makefile
 
-.PHONY: help build up down logs restart test clean setup
+.PHONY: help build up down logs restart test clean setup setup-windows
 
 # Default target
 help:
 	@echo "Stock Screening Bot - Available commands:"
 	@echo ""
-	@echo "  setup     - Initial setup (copy .env.example to .env)"
-	@echo "  build     - Build Docker image"
-	@echo "  up        - Start services with Docker Compose"
-	@echo "  down      - Stop services"
-	@echo "  logs      - View real-time logs"
-	@echo "  restart   - Restart services"
-	@echo "  test      - Run single test execution"
-	@echo "  clean     - Clean up containers and images"
-	@echo "  install   - Install Python dependencies locally"
+	@echo "  setup        - Initial setup (Unix/Linux/Mac)"
+	@echo "  setup-windows- Initial setup (Windows)"
+	@echo "  build        - Build Docker image"
+	@echo "  up           - Start services with Docker Compose"
+	@echo "  down         - Stop services"
+	@echo "  logs         - View real-time logs"
+	@echo "  restart      - Restart services"
+	@echo "  test         - Run single test execution"
+	@echo "  clean        - Clean up containers and images"
+	@echo "  install      - Install Python dependencies locally"
 	@echo ""
 
-# Initial setup
+# Initial setup for Unix/Linux/Mac
 setup:
 	@if [ ! -f .env ]; then \
 		cp .env.example .env; \
@@ -26,6 +27,15 @@ setup:
 		echo ".env file already exists."; \
 	fi
 	@mkdir -p output logs
+	@chmod 755 output logs
+	@echo "Created output and logs directories with proper permissions."
+
+# Initial setup for Windows
+setup-windows:
+	@if not exist .env copy .env.example .env
+	@if not exist output mkdir output
+	@if not exist logs mkdir logs
+	@echo "Setup complete. Please edit .env with your credentials."
 
 # Build Docker image
 build:
