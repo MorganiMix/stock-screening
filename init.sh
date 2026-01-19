@@ -6,8 +6,11 @@ echo "Initializing stock screening bot..."
 # Create output directory if it doesn't exist
 mkdir -p /output
 
-# Set proper permissions
-sudo chmod 755 /output
+# Set proper permissions (if possible)
+# Note: Permissions should be set correctly by Dockerfile
+if [ ! -w /output ]; then
+    echo "⚠️  Warning: Output directory is not writable"
+fi
 
 # Check if we can write to the directory
 if [ -w /output ]; then

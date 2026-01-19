@@ -32,7 +32,7 @@ RUN useradd --create-home --shell /bin/bash app
 
 # Create directories for output files with proper ownership
 RUN mkdir -p /output \
-    && chown -R app:app /app
+    && chown -R app:app /app /output
 
 USER app
 
