@@ -1,0 +1,8 @@
+pandas
+numpy
+yfinance
+python-telegram-bot
+matplotlib
+openpyxl
+python-dotenv
+schedule
