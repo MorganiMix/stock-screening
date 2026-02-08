@@ -69,10 +69,12 @@ def run_stock_screening():
         # stock codes
         try:
             L_stocks = pd.read_excel(path + filename)["代號"].tolist()
-            L_stocks = [i[1:] for i in L_stocks]
+            L_stocks = [i[0:] for i in L_stocks]
+            L_stocks.append("^IXIC")
             L_stocks.append("^HSI")
             L_stocks_names = pd.read_excel(path + filename)["名稱"].tolist()
             L_stocks_names.append("恆生指數")
+            L_stocks_names.append("納指")
             logging.info(f"Loaded {len(L_stocks)} stocks for screening")
         except Exception as e:
             logging.error(f"Error loading stock data from Excel: {e}")
@@ -105,6 +107,7 @@ def generate_chart(D_stocks, df_result, today):
     try:
         L_coins_sorted = df_result["Stock Code"].iloc[:5].tolist()
         L_coins_sorted.append("^HSI")
+        L_coins_sorted.append("^IXIC")
         
         f1, ax = plt.subplots(figsize=(15, 10))
         for i in L_coins_sorted:
